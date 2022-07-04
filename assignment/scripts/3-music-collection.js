@@ -23,6 +23,8 @@ console.log(addToCollection('The Click', 'AJR', 2017));
 console.log(addToCollection('The Lumineers', 'The Lumineers', 2012));
 console.log(addToCollection('WHEN WE ALL FALL ASLEEP, WHERE DO WE GO?', 'Billie Eilish', 2019));
 console.log(addToCollection('folklore', 'Taylor Swift', 2020));
+console.log(addToCollection('OK Orchestra', 'AJR', 2021));
+// Added extra album to collection to have same artist twice (findByArtist)
 console.log(collection);
 
 /**
@@ -36,7 +38,6 @@ function showCollection(recordsInput) {
 }
 showCollection(collection);
 
-console.log(addToCollection('OK Orchestra', 'AJR', 2021));
 
 /**
  * @param {string} artistInput artist to search for
@@ -53,3 +54,22 @@ function findByArtist(artistInput, collectionInput) {
     return foundArtists;
 }
 console.log(findByArtist('AJR', collection));
+
+/**
+ * @param {string} searchInput 
+ * @return returns an array of items in collection matching search criteria 
+ */
+function search(searchInput, collectionInput) {
+    let searchResults = [];
+    for(let objectItem of collectionInput) {
+        if (searchInput === objectItem.title || searchInput === objectItem.artist || searchInput === objectItem.yearPublished) {
+            searchResults.push('title: ', objectItem.title, 'artist: ' + objectItem.artist, 'year: ' + objectItem.yearPublished);
+        }
+    }
+    if (searchInput === '') {
+        return collectionInput;
+    }
+    return searchResults;
+}
+
+console.log(search('', collection));
