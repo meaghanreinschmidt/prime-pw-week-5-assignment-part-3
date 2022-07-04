@@ -35,3 +35,21 @@ function showCollection(recordsInput) {
     };
 }
 showCollection(collection);
+
+console.log(addToCollection('OK Orchestra', 'AJR', 2021));
+
+/**
+ * @param {string} artistInput artist to search for
+ * @param collectionInput collection to look through
+ * @return returns an array with matching artist
+ */
+function findByArtist(artistInput, collectionInput) {
+    let foundArtists = [];
+    for(let artist of collectionInput) {
+        if (artistInput === artist.artist) {
+            foundArtists.push(artist.artist);
+        } 
+    }
+    return foundArtists;
+}
+console.log(findByArtist('AJR', collection));
